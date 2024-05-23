@@ -12,16 +12,16 @@ class KaspressoAddStudentScreen : KScreen<KaspressoMainScreen>() {
     override val viewClass: Class<*>? = null
 
     //Elements
-    private val  nameField = KTextInputLayout{withId(R.id.et_name)}
-    private val  surnameField = KTextInputLayout{withId(R.id.et_surname)}
-    private val  genderField = KTextInputLayout{withId(R.id.et_gender)}
-    private val  birthdateField = KTextInputLayout{withId(R.id.et_birthdate)}
-    private val  emailField = KTextInputLayout{withId(R.id.et_email)}
-    private val  phoneField = KTextInputLayout{withId(R.id.et_phone)}
-    private val  addressField = KTextInputLayout{withId(R.id.et_address)}
-    private val  photoLinkField = KTextInputLayout{withId(R.id.et_image)}
-    private val  scoreField = KTextInputLayout{withId(R.id.et_score)}
-
+    private val  nameField = KTextInputLayout{withId(R.id.til_name)}
+    private val  surnameField = KTextInputLayout{withId(R.id.til_surname)}
+    private val  genderField = KTextInputLayout{withId(R.id.til_gender)}
+    private val  birthdateField = KTextInputLayout{withId(R.id.til_birthdate)}
+    private val  emailField = KTextInputLayout{withId(R.id.til_email)}
+    private val  phoneField = KTextInputLayout{withId(R.id.til_phone)}
+    private val  addressField = KTextInputLayout{withId(R.id.til_address)}
+    private val  photoLinkField = KTextInputLayout{withId(R.id.til_image_link)}
+    private val  scoreField = KTextInputLayout{withId(R.id.til_score)}
+    private val saveButton = KButton{withText("Сохранить")}
     //Actions
     fun enterName(name : String){
         nameField.edit.replaceText(name)
@@ -56,6 +56,10 @@ class KaspressoAddStudentScreen : KScreen<KaspressoMainScreen>() {
 
     fun enterScore(score: String) {
         scoreField.edit.replaceText(score)
+    }
+
+    fun clickSave() {
+        saveButton.click()
     }
 
     //Asserts

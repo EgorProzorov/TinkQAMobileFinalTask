@@ -72,8 +72,12 @@ dependencies {
     //Tests
     androidTestImplementation "com.kaspersky.android-components:kaspresso:1.5.3"
     androidTestUtil "androidx.test:orchestrator:1.4.2"
-    androidTestImplementation 'com.github.tomakehurst:wiremock:2.27.2'
+    androidTestImplementation("com.github.tomakehurst:wiremock:2.26.3") { exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+    }
     androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.5'
 
     androidTestImplementation 'androidx.test:core:1.5.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
 }

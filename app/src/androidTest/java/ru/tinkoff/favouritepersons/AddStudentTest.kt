@@ -1,6 +1,7 @@
 package ru.tinkoff.favouritepersons
 
 import androidx.test.ext.junit.rules.activityScenarioRule
+import androidx.test.ext.junit.runners.AndroidJUnit4
 
 import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock.aResponse
@@ -12,11 +13,13 @@ import com.kaspersky.kaspresso.params.FlakySafetyParams
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
 import ru.tinkoff.favouritepersons.presentation.activities.MainActivity
+import ru.tinkoff.favouritepersons.screens.KaspressoAddStudentScreen
 import ru.tinkoff.favouritepersons.screens.KaspressoMainScreen
 
 
-
+@RunWith(AndroidJUnit4::class) // мб проверять не так много полей, либо передавать их как то более красиво
 class KaspressoAddStudentTest : TestCase(
     kaspressoBuilder = Kaspresso.Builder.simple(
         customize = {
@@ -40,7 +43,23 @@ class KaspressoAddStudentTest : TestCase(
         val mainScreen = KaspressoMainScreen()
         mainScreen.clickAddManually()
         mainScreen.clickAddManually()
-        Thread.sleep(5000)
+        val addScreen = KaspressoAddStudentScreen()
+//        addScreen.enterName("Ricardo")
+        addScreen.apply {
+            enterName("Billy")
+            enterSurname("Herrington")
+            enterGender("Мужской")
+            enterBirthdate("1990-01-01")
+            enterEmail("billy@example.com")
+            enterPhone("1234567890")
+            enterAddress("Our hearts")
+            enterPhotoLink("https://steamuserimages-a.akamaihd.net/ugc/2301969478603184329/ED862B8FB36DCA804AB8EFC5B062FC71126E8E4C/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true")
+            enterScore("100")
+            clickSave()
+        }
+        mainScreen.checkUser("Billy Herrington","Male, 34", "billy@example.com", "1234567890", "Our hearts", "100" )
+
+
 
 //        stubFor( // мокаем для того чтобы работать только с одним именем и получать всегда один ответ
 //            post(
