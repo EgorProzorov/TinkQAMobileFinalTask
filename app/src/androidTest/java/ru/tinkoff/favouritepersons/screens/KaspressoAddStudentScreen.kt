@@ -1,8 +1,10 @@
 package ru.tinkoff.favouritepersons.screens
 
 import com.kaspersky.kaspresso.screens.KScreen
+import io.github.kakaocup.kakao.common.views.KView
 import io.github.kakaocup.kakao.edit.KTextInputLayout
 import io.github.kakaocup.kakao.text.KButton
+import io.github.kakaocup.kakao.text.KTextView
 import ru.tinkoff.favouritepersons.R
 
 
@@ -63,6 +65,10 @@ class KaspressoAddStudentScreen : KScreen<KaspressoMainScreen>() {
     }
 
     //Asserts
-
+    fun checkErrorMessage(message : String){
+        KTextView {
+            withText(message)
+        }.isVisible()
+    }
 
 }

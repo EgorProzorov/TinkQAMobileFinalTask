@@ -18,9 +18,9 @@ import ru.tinkoff.favouritepersons.presentation.activities.MainActivity
 import ru.tinkoff.favouritepersons.screens.KaspressoAddStudentScreen
 import ru.tinkoff.favouritepersons.screens.KaspressoMainScreen
 
-
+// TEST CASE 1
 @RunWith(AndroidJUnit4::class) // мб проверять не так много полей, либо передавать их как то более красиво
-class KaspressoAddStudentTest : TestCase(
+class AddStudentTest : TestCase(
     kaspressoBuilder = Kaspresso.Builder.simple(
         customize = {
             flakySafetyParams = FlakySafetyParams.custom(timeoutMs = 6_000, intervalMs = 250)
@@ -44,7 +44,6 @@ class KaspressoAddStudentTest : TestCase(
         mainScreen.clickAddManually()
         mainScreen.clickAddManually()
         val addScreen = KaspressoAddStudentScreen()
-//        addScreen.enterName("Ricardo")
         addScreen.apply {
             enterName("Billy")
             enterSurname("Herrington")
