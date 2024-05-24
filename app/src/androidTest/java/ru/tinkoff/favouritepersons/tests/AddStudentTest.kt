@@ -10,6 +10,7 @@ import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import ru.tinkoff.favouritepersons.AgeCount
 import ru.tinkoff.favouritepersons.PreferenceRule
 import ru.tinkoff.favouritepersons.presentation.activities.MainActivity
 import ru.tinkoff.favouritepersons.screens.KaspressoAddStudentScreen
@@ -53,7 +54,8 @@ class AddStudentTest : TestCase(
             enterScore("100")
             clickSave()
         }
-        mainScreen.checkUserData("Billy Herrington","Male, 34", "billy@example.com", "1234567890", "Our hearts", "100" )
+        val age = AgeCount.calculateAge("1990-01-01")
+        mainScreen.checkUserData("Billy Herrington","Male, $age", "billy@example.com", "1234567890", "Our hearts", "100" )
 
 
 

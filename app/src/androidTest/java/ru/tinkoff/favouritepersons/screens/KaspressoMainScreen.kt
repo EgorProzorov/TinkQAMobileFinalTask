@@ -54,7 +54,12 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
     fun checkUserNotVisible(name: String){
         personList{childWith<PersonRating> {withText(containsString(name)) } perform {
             doesNotExist()
+            }
         }
+    }
+    fun clickFirstStudent(){
+        personList.childAt<PersonRating>(0){
+            perform { click() }
         }
     }
 

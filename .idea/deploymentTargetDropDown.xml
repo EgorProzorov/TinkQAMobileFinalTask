@@ -2,29 +2,16 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="AddStudentValidationTest">
-        <State>
-          <runningDeviceTargetSelectedWithDropDown>
-            <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Pixel_6_API_28.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-05-23T19:59:28.058082Z" />
-        </State>
-      </entry>
-      <entry key="DeleteStudentTest">
-        <State />
-      </entry>
       <entry key="DeleteStudentTestKt">
         <State />
       </entry>
+      <entry key="EditStudentTest">
+        <State />
+      </entry>
       <entry key="add()">
+        <State />
+      </entry>
+      <entry key="app">
         <State>
           <runningDeviceTargetSelectedWithDropDown>
             <Target>
@@ -32,31 +19,18 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Pixel_6_API_34.avd" />
+                  <value value="$USER_HOME$/.android/avd/Copy_of_Pixel_6_API_28.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-05-23T17:38:26.605586Z" />
-        </State>
-      </entry>
-      <entry key="app">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Pixel_6_API_28.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-05-23T16:44:05.767408Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-05-24T15:10:46.884890Z" />
         </State>
       </entry>
       <entry key="delete()">
+        <State />
+      </entry>
+      <entry key="edit()">
         <State />
       </entry>
     </value>

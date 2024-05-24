@@ -34,6 +34,7 @@ class AddStudentValidationTest(
 
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
+
     companion object {
         @JvmStatic
         @Parameterized.Parameters() // параметры для тестирования и сообщение об ошибке которое ожидаем
