@@ -1,7 +1,10 @@
 package ru.tinkoff.favouritepersons.screens
 
 import android.view.View
+import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.web.webdriver.DriverAtoms.getText
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.recycler.KRecyclerItem
 import io.github.kakaocup.kakao.recycler.KRecyclerView
@@ -18,6 +21,9 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
     override val viewClass: Class<*>? = null
 
     private val  addPersonManuallyButton = KButton{withId(R.id.fab_add_person_manually)}
+    private val sortButton = KButton{withId(R.id.action_item_sort)}
+    private val sortByFullNameButton = KButton{withId(R.id.bsd_rb_name)}
+    private val sortByRatingButton = KButton{withId(R.id.bsd_rb_rating)}
 
     private val personList = KRecyclerView(
         builder = { withId(R.id.rv_person_list) },
@@ -28,10 +34,10 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
     addPersonManuallyButton.click()
     }
 
-
     fun checkIfOpen(){
         personList.isDisplayed()
     }
+
     fun checkUserData(name : String, privateInfo : String, email : String, phone: String, address : String, score : String){
         personList.childAt<PersonRating>(0){
             this.personName.hasText(name)
@@ -46,20 +52,57 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
     fun checkIfEmpty(){
         personList{hasSize(0)}
     }
+
     fun deleteStudent() {
         personList.childAt<PersonRating>(0){
             view.perform(ViewActions.swipeLeft())
         }
     }
+
     fun checkUserNotVisible(name: String){
         personList{childWith<PersonRating> {withText(containsString(name)) } perform {
             doesNotExist()
             }
         }
     }
+
     fun clickFirstStudent(){
         personList.childAt<PersonRating>(0){
             perform { click() }
+        }
+    }
+
+    fun clickSortButton(){
+        sortButton.click()
+    }
+    fun clickSortByFullName(){
+        sortByFullNameButton.click()
+    }
+
+    fun clickSortByRating(){
+        sortByRatingButton.click()
+    }
+
+    fun checkIfSortedByFullName() {
+        personList.childAt<PersonRating>(0){
+            this.personName.containsText("Milos")
+        }
+        personList.childAt<PersonRating>(1){
+            this.personName.containsText("Herrington")
+        }
+        personList.childAt<PersonRating>(2){
+            this.personName.containsText("Darkholme")
+        }
+    }
+    fun checkIfSortedByRating() {
+        personList.childAt<PersonRating>(0){
+            this.personRating.containsText("100")
+        }
+        personList.childAt<PersonRating>(1){
+            this.personRating.containsText("77")
+        }
+        personList.childAt<PersonRating>(2){
+            this.personRating.containsText("50")
         }
     }
 

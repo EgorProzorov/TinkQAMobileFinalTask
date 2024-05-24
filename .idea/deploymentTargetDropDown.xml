@@ -2,10 +2,10 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="DeleteStudentTestKt">
+      <entry key="EditStudentTest">
         <State />
       </entry>
-      <entry key="EditStudentTest">
+      <entry key="SortByFullNameTest">
         <State />
       </entry>
       <entry key="add()">
@@ -27,11 +27,24 @@
           <timeTargetWasSelectedWithDropDown value="2024-05-24T15:10:46.884890Z" />
         </State>
       </entry>
-      <entry key="delete()">
-        <State />
-      </entry>
       <entry key="edit()">
         <State />
+      </entry>
+      <entry key="sort()">
+        <State>
+          <runningDeviceTargetSelectedWithDropDown>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="$USER_HOME$/.android/avd/Copy_of_Pixel_6_API_28.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-05-24T17:25:58.491030Z" />
+        </State>
       </entry>
     </value>
   </component>
