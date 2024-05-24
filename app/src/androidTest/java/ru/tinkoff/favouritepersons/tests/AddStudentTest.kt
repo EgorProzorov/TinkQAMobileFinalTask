@@ -1,12 +1,8 @@
-package ru.tinkoff.favouritepersons
+package ru.tinkoff.favouritepersons.tests
 
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
-import com.github.tomakehurst.wiremock.client.WireMock
-import com.github.tomakehurst.wiremock.client.WireMock.aResponse
-import com.github.tomakehurst.wiremock.client.WireMock.stubFor
-import com.github.tomakehurst.wiremock.junit.WireMockRule
 import com.kaspersky.kaspresso.interceptors.watcher.testcase.impl.views.DumpViewsInterceptor
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
 import com.kaspersky.kaspresso.params.FlakySafetyParams
@@ -14,6 +10,7 @@ import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import ru.tinkoff.favouritepersons.PreferenceRule
 import ru.tinkoff.favouritepersons.presentation.activities.MainActivity
 import ru.tinkoff.favouritepersons.screens.KaspressoAddStudentScreen
 import ru.tinkoff.favouritepersons.screens.KaspressoMainScreen
@@ -56,7 +53,7 @@ class AddStudentTest : TestCase(
             enterScore("100")
             clickSave()
         }
-        mainScreen.checkUser("Billy Herrington","Male, 34", "billy@example.com", "1234567890", "Our hearts", "100" )
+        mainScreen.checkUserData("Billy Herrington","Male, 34", "billy@example.com", "1234567890", "Our hearts", "100" )
 
 
 

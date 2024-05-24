@@ -1,13 +1,14 @@
 package ru.tinkoff.favouritepersons.screens
 
-import android.util.Log
 import android.view.View
-import com.kaspersky.kaspresso.device.phone.Phone
+import androidx.test.espresso.action.ViewActions
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.recycler.KRecyclerItem
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView
+import org.hamcrest.Matcher
+import org.hamcrest.Matchers.containsString
 import ru.tinkoff.favouritepersons.R
 
 
@@ -31,7 +32,7 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
     fun checkIfOpen(){
         personList.isDisplayed()
     }
-    fun checkUser(name : String, privateInfo : String, email : String, phone: String, address : String, score : String){
+    fun checkUserData(name : String, privateInfo : String, email : String, phone: String, address : String, score : String){
         personList.childAt<PersonRating>(0){
             this.personName.hasText(name)
             this.personPrivateInfo.hasText(privateInfo)
@@ -41,8 +42,24 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
             this.personRating.hasText(score)
         }
     }
+
+    fun checkIfEmpty(){
+        personList{hasSize(0)}
+    }
+    fun deleteStudent() {
+        personList.childAt<PersonRating>(0){
+            view.perform(ViewActions.swipeLeft())
+        }
+    }
+    fun checkUserNotVisible(name: String){
+        personList{childWith<PersonRating> {withText(containsString(name)) } perform {
+            doesNotExist()
+        }
+        }
+    }
+
 }
-private class PersonRating(matcher: org.hamcrest.Matcher<View>) : KRecyclerItem<PersonRating>(matcher) {
+private class PersonRating(matcher: Matcher<View>) : KRecyclerItem<PersonRating>(matcher) {
     val personName = KTextView(matcher) { withId(R.id.person_name) }
     val personPrivateInfo = KTextView(matcher) { withId(R.id.person_private_info) }
     val personEmail = KTextView(matcher) { withId(R.id.person_email) }

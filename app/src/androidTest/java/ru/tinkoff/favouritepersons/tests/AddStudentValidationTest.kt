@@ -1,12 +1,7 @@
-package ru.tinkoff.favouritepersons
+package ru.tinkoff.favouritepersons.tests
 
 import androidx.test.ext.junit.rules.activityScenarioRule
-import androidx.test.ext.junit.runners.AndroidJUnit4
 
-import com.github.tomakehurst.wiremock.client.WireMock
-import com.github.tomakehurst.wiremock.client.WireMock.aResponse
-import com.github.tomakehurst.wiremock.client.WireMock.stubFor
-import com.github.tomakehurst.wiremock.junit.WireMockRule
 import com.kaspersky.kaspresso.interceptors.watcher.testcase.impl.views.DumpViewsInterceptor
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
 import com.kaspersky.kaspresso.params.FlakySafetyParams
@@ -15,6 +10,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
+import ru.tinkoff.favouritepersons.PreferenceRule
 import ru.tinkoff.favouritepersons.presentation.activities.MainActivity
 import ru.tinkoff.favouritepersons.screens.KaspressoAddStudentScreen
 import ru.tinkoff.favouritepersons.screens.KaspressoMainScreen
@@ -36,14 +32,11 @@ class AddStudentValidationTest(
     @get:Rule
     val prefs = PreferenceRule()
 
-//    @get: Rule
-//    val mock = WireMockRule(5000)
-
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
     companion object {
         @JvmStatic
-        @Parameterized.Parameters(name = "{index}: Validate {0}")
+        @Parameterized.Parameters() // параметры для тестирования и сообщение об ошибке которое ожидаем
         fun data(): Collection<Array<Any>> {
             return listOf(
                 arrayOf("Name", "Поле должно быть заполнено!"),
@@ -60,7 +53,7 @@ class AddStudentValidationTest(
     }
 
     @Test
-    fun add() = run {
+    fun addValidation() = run {
         val mainScreen = KaspressoMainScreen()
         mainScreen.clickAddManually()
         mainScreen.clickAddManually()

@@ -18,24 +18,11 @@
           <timeTargetWasSelectedWithDropDown value="2024-05-23T19:59:28.058082Z" />
         </State>
       </entry>
-      <entry key="All Tests">
+      <entry key="DeleteStudentTest">
         <State />
       </entry>
-      <entry key="KaspressoAddStudentTest">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Pixel_6_API_34.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-05-23T14:28:19.243699Z" />
-        </State>
+      <entry key="DeleteStudentTestKt">
+        <State />
       </entry>
       <entry key="add()">
         <State>
@@ -68,6 +55,9 @@
           </targetSelectedWithDropDown>
           <timeTargetWasSelectedWithDropDown value="2024-05-23T16:44:05.767408Z" />
         </State>
+      </entry>
+      <entry key="delete()">
+        <State />
       </entry>
     </value>
   </component>
