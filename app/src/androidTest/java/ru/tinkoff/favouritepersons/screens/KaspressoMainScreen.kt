@@ -1,11 +1,16 @@
 package ru.tinkoff.favouritepersons.screens
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
 import android.view.View
+import android.widget.ImageView
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.web.webdriver.DriverAtoms.getText
 import com.kaspersky.kaspresso.screens.KScreen
+import io.github.kakaocup.kakao.image.KImageView
 import io.github.kakaocup.kakao.recycler.KRecyclerItem
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KButton
@@ -105,7 +110,14 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
             this.personRating.containsText("50")
         }
     }
-
+    fun checkAvatar(){
+        personList.childAt<PersonRating>(0){
+            this.personPhoto{
+                isDisplayed()
+                isVisible()
+            }
+        }
+    }
 }
 private class PersonRating(matcher: Matcher<View>) : KRecyclerItem<PersonRating>(matcher) {
     val personName = KTextView(matcher) { withId(R.id.person_name) }
@@ -114,4 +126,5 @@ private class PersonRating(matcher: Matcher<View>) : KRecyclerItem<PersonRating>
     val personPhone = KTextView(matcher) { withId(R.id.person_phone) }
     val personAddress = KTextView(matcher) { withId(R.id.person_address) }
     val personRating = KTextView(matcher){withId(R.id.person_rating)}
+    val personPhoto = KImageView(matcher){withId(R.id.person_avatar)}
 }

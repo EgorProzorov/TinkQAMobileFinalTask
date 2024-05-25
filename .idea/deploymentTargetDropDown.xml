@@ -2,9 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="EditStudentTest">
-        <State />
-      </entry>
       <entry key="SortByFullNameTest">
         <State />
       </entry>
@@ -13,21 +10,24 @@
       </entry>
       <entry key="app">
         <State>
-          <runningDeviceTargetSelectedWithDropDown>
+          <targetSelectedWithDropDown>
             <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
+              <type value="QUICK_BOOT_TARGET" />
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Copy_of_Pixel_6_API_28.avd" />
+                  <value value="$USER_HOME$/.android/avd/Pixel_6_API_28.avd" />
                 </Key>
               </deviceKey>
             </Target>
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-05-24T15:10:46.884890Z" />
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-05-25T00:11:29.197388Z" />
         </State>
       </entry>
       <entry key="edit()">
+        <State />
+      </entry>
+      <entry key="editPhoto()">
         <State />
       </entry>
       <entry key="sort()">
