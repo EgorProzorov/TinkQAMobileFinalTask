@@ -1,9 +1,5 @@
 package ru.tinkoff.favouritepersons.screens
 
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
-import android.os.Build
 import android.util.Log
 import android.view.View
 import androidx.test.espresso.action.ViewActions
@@ -46,10 +42,6 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
         addStudentInternetButton.click()
     }
 
-    fun checkIfOpen(){
-        personList.isDisplayed()
-    }
-
     fun checkUserData(name : String, privateInfo : String, email : String, phone: String, address : String, score : String){
         personList.childAt<PersonRating>(0){
             this.personName.hasText(name)
@@ -60,14 +52,11 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
             this.personRating.hasText(score)
         }
     }
+
     fun checkUserAge(privateInfo: String){
         personList.childAt<PersonRating>(0){
             this.personPrivateInfo.hasText(privateInfo)
         }
-    }
-
-    fun checkIfEmpty(){
-        personList{hasSize(0)}
     }
 
     fun deleteStudent() {
@@ -92,6 +81,7 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
     fun clickSortButton(){
         sortButton.click()
     }
+
     fun clickSortByFullName(){
         sortByFullNameButton.click()
     }
@@ -111,6 +101,7 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
             this.personName.containsText("Darkholme")
         }
     }
+
     fun checkIfSortedByRating() {
         personList.childAt<PersonRating>(0){
             this.personRating.containsText("100")
@@ -122,6 +113,7 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
             this.personRating.containsText("50")
         }
     }
+
     fun checkAvatar(){
         personList.childAt<PersonRating>(0){
             this.personPhoto{
@@ -149,7 +141,6 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
             true // Если NullPointerException, изображение не видно
         }
     }
-
 }
 private class PersonRating(matcher: Matcher<View>) : KRecyclerItem<PersonRating>(matcher) {
     val personName = KTextView(matcher) { withId(R.id.person_name) }

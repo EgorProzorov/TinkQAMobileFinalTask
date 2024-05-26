@@ -11,7 +11,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import ru.tinkoff.favouritepersons.AgeCount
+import ru.tinkoff.favouritepersons.datacouters.AgeCount
 import ru.tinkoff.favouritepersons.PreferenceRule
 import ru.tinkoff.favouritepersons.database.DatabaseHelper
 import ru.tinkoff.favouritepersons.presentation.activities.MainActivity
@@ -19,7 +19,7 @@ import ru.tinkoff.favouritepersons.screens.KaspressoAddStudentScreen
 import ru.tinkoff.favouritepersons.screens.KaspressoMainScreen
 
 // TEST CASE 14
-@RunWith(AndroidJUnit4::class) // мб проверять не так много полей, либо передавать их как то более красиво
+@RunWith(AndroidJUnit4::class)
 class AgeCountTest : TestCase(
     kaspressoBuilder = Kaspresso.Builder.simple(
         customize = {

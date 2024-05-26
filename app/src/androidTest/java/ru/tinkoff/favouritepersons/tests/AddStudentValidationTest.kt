@@ -46,7 +46,7 @@ class AddStudentValidationTest(
 
     companion object {
         @JvmStatic
-        @Parameterized.Parameters() // параметры для тестирования и сообщение об ошибке которое ожидаем
+        @Parameterized.Parameters // параметры для тестирования и сообщение об ошибке которое ожидаем
         fun data(): Collection<Array<Any>> {
             return listOf(
                 arrayOf("Name", "Поле должно быть заполнено!"),

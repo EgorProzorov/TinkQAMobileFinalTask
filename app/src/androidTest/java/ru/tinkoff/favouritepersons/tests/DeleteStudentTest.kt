@@ -7,7 +7,6 @@ import com.kaspersky.kaspresso.interceptors.watcher.testcase.impl.views.DumpView
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
 import com.kaspersky.kaspresso.params.FlakySafetyParams
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
-import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -15,8 +14,6 @@ import org.junit.runner.RunWith
 import ru.tinkoff.favouritepersons.PreferenceRule
 import ru.tinkoff.favouritepersons.database.DatabaseHelper
 import ru.tinkoff.favouritepersons.presentation.activities.MainActivity
-import ru.tinkoff.favouritepersons.room.PersonDataBase
-import ru.tinkoff.favouritepersons.screens.KaspressoAddStudentScreen
 import ru.tinkoff.favouritepersons.screens.KaspressoMainScreen
 
 // TEST CASE 3

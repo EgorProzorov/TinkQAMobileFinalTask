@@ -1,7 +1,6 @@
 package ru.tinkoff.favouritepersons.screens
 
 import com.kaspersky.kaspresso.screens.KScreen
-import io.github.kakaocup.kakao.common.views.KView
 import io.github.kakaocup.kakao.edit.KTextInputLayout
 import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView
@@ -25,7 +24,6 @@ class KaspressoAddStudentScreen : KScreen<KaspressoMainScreen>() {
     private val  scoreField = KTextInputLayout{withId(R.id.til_score)}
     private val saveButton = KButton{withText("Сохранить")}
 
-    private val errorMaxLength = KTextView{withText("Максимальная длина 100 символов")}
     //Actions
     fun enterName(name : String){
         nameField.edit.replaceText(name)

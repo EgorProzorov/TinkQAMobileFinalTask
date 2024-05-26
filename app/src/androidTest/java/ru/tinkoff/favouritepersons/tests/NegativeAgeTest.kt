@@ -2,7 +2,6 @@ package ru.tinkoff.favouritepersons.tests
 
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.github.tomakehurst.wiremock.client.WireMock
 
 import com.kaspersky.kaspresso.interceptors.watcher.testcase.impl.views.DumpViewsInterceptor
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
@@ -14,16 +13,14 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import ru.tinkoff.favouritepersons.datacouters.AgeCount
 import ru.tinkoff.favouritepersons.PreferenceRule
-import ru.tinkoff.favouritepersons.R
 import ru.tinkoff.favouritepersons.database.DatabaseHelper
 import ru.tinkoff.favouritepersons.presentation.activities.MainActivity
 import ru.tinkoff.favouritepersons.screens.KaspressoAddStudentScreen
 import ru.tinkoff.favouritepersons.screens.KaspressoMainScreen
-import ru.tinkoff.favouritepersons.wiremock.WireMockHelper
 
-// TEST CASE 1
+// TEST CASE 15
 @RunWith(AndroidJUnit4::class)
-class AddStudentTest : TestCase(
+class NegativeAgeTest : TestCase(
     kaspressoBuilder = Kaspresso.Builder.simple(
         customize = {
             flakySafetyParams = FlakySafetyParams.custom(timeoutMs = 6_000, intervalMs = 250)
@@ -44,10 +41,8 @@ class AddStudentTest : TestCase(
             DatabaseHelper.clearDatabase(activity)
         }
     }
-
     @Test
-    fun add() = run {
-
+    fun negativeAgeCount() = run {
         val mainScreen = KaspressoMainScreen()
         mainScreen.clickAddMenu()
         mainScreen.clickAddManually()
@@ -56,15 +51,14 @@ class AddStudentTest : TestCase(
             enterName("Billy")
             enterSurname("Herrington")
             enterGender("Мужской")
-            enterBirthdate("1990-01-01")
+            enterBirthdate(AgeCount.createFutureDate()) // вводит текущую дату + 1 год
             enterEmail("billy@example.com")
             enterPhone("1234567890")
             enterAddress("Our hearts")
             enterPhotoLink("https://steamuserimages-a.akamaihd.net/ugc/2301969478603184329/ED862B8FB36DCA804AB8EFC5B062FC71126E8E4C/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true")
             enterScore("100")
             clickSave()
+            checkErrorMessage("Введен некорректный возраст!") // тест падает тк нету предупреждения, отображается возраст -1
         }
-        val age = AgeCount.calculateAge("1990-01-01")
-        mainScreen.checkUserData("Billy Herrington","Male, $age", "billy@example.com", "1234567890", "Our hearts", "100" )
-   }
+    }
 }

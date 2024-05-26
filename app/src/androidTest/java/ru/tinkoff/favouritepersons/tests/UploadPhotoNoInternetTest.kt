@@ -1,6 +1,5 @@
 package ru.tinkoff.favouritepersons.tests
 
-import android.util.Log
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.github.tomakehurst.wiremock.junit.WireMockRule
@@ -9,13 +8,11 @@ import com.kaspersky.kaspresso.interceptors.watcher.testcase.impl.views.DumpView
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
 import com.kaspersky.kaspresso.params.FlakySafetyParams
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
-import org.junit.After
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import ru.tinkoff.favouritepersons.AgeCount
 import ru.tinkoff.favouritepersons.PreferenceRule
 import ru.tinkoff.favouritepersons.database.CacheCleaner
 import ru.tinkoff.favouritepersons.database.DatabaseHelper
@@ -38,9 +35,6 @@ class UploadPhotoNoInternetTest : TestCase( // падает, не ловим т�
 ) {
     @get:Rule
     val prefs = PreferenceRule()
-
-    @get: Rule
-    val mock = WireMockRule(5000)
 
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()

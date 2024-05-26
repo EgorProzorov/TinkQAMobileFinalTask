@@ -8,14 +8,13 @@ import com.kaspersky.kaspresso.interceptors.watcher.testcase.impl.views.DumpView
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
 import com.kaspersky.kaspresso.params.FlakySafetyParams
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
-import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import ru.tinkoff.favouritepersons.AgeCount
 import ru.tinkoff.favouritepersons.PreferenceRule
 import ru.tinkoff.favouritepersons.database.CacheCleaner
+import ru.tinkoff.favouritepersons.database.DatabaseHelper
 import ru.tinkoff.favouritepersons.presentation.activities.MainActivity
 import ru.tinkoff.favouritepersons.screens.KaspressoAddStudentScreen
 import ru.tinkoff.favouritepersons.screens.KaspressoMainScreen
@@ -39,6 +38,13 @@ class EditPhotoNoInternetTest : TestCase( // падает, не ловим то�
 
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
+
+    @Before
+    fun editDatabase() {
+        activityScenarioRule.scenario.onActivity { activity ->
+            DatabaseHelper.clearDatabase(activity)
+        }
+    }
 
     @Test
     fun editPhotoNoInternet() = before {
@@ -70,16 +76,4 @@ class EditPhotoNoInternetTest : TestCase( // падает, не ловим то�
         }
         mainScreen.checkInternetToast()
     }
-
-
-
-
-//        stubFor( // мокаем для того чтобы работать только с одним именем и получать всегда один ответ
-//            post(
-//                urlPathEqualTo("/api/core/cats/add"))
-//                .willReturn(aResponse()
-//                    .withStatus(200)
-//                    .withBody(fileToString("add_cat.json"))))
-//
-//
 }

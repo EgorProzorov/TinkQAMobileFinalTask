@@ -2,7 +2,13 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="AddStudentValidationTest">
+      <entry key="All Tests">
+        <State />
+      </entry>
+      <entry key="EditPhotoTest">
+        <State />
+      </entry>
+      <entry key="NegativeAgeTest">
         <State />
       </entry>
       <entry key="UploadPhotoNoInternetTest">
@@ -26,12 +32,6 @@
           </targetSelectedWithDropDown>
           <timeTargetWasSelectedWithDropDown value="2024-05-25T00:11:29.197388Z" />
         </State>
-      </entry>
-      <entry key="editPhotoNoInternet()">
-        <State />
-      </entry>
-      <entry key="uploadPhotoNoInternet()">
-        <State />
       </entry>
     </value>
   </component>

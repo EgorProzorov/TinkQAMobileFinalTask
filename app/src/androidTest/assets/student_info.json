@@ -1,0 +1,64 @@
+{
+  "results": [{
+    "gender": "male",
+    "name": {
+      "title": "Mr",
+      "first": "Hunter",
+      "last": "Gauthier"
+    },
+    "location": {
+      "street": {
+        "number": 2271,
+        "name": "Brock Rd"
+      },
+      "city": "Springfield",
+      "state": "Nunavut",
+      "country": "Canada",
+      "postcode": "E6O 4W7",
+      "coordinates": {
+        "latitude": "-67.8085",
+        "longitude": "-131.2988"
+      },
+      "timezone": {
+        "offset": "-2:00",
+        "description": "Mid-Atlantic"
+      }
+    },
+    "email": "hunter.gauthier@example.com",
+    "login": {
+      "uuid": "65533c90-d05f-4b21-8b1b-3ba109f2cb26",
+      "username": "beautifulpeacock301",
+      "password": "qwert",
+      "salt": "Zat0Rkgq",
+      "md5": "8694d82c2fa8f8d423fb951094b53352",
+      "sha1": "3cbb2c34b76ec5b65b14fd059522793995154570",
+      "sha256": "7b746e7c0dd2beb786673b03813a958d9256191353e3542ccdb1e99ec11c7dab"
+    },
+    "dob": {
+      "date": "1987-01-03T08:07:59.243Z",
+      "age": 37
+    },
+    "registered": {
+      "date": "2015-12-10T01:00:48.960Z",
+      "age": 8
+    },
+    "phone": "B59 D77-1413",
+    "cell": "N26 G26-4347",
+    "id": {
+      "name": "SIN",
+      "value": "587343153"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/men/10.jpg",
+      "medium": "https://randomuser.me/api/portraits/med/men/10.jpg",
+      "thumbnail": "https://randomuser.me/api/portraits/thumb/men/10.jpg"
+    },
+    "nat": "CA"
+  }],
+  "info": {
+    "seed": "14ecaa64670e14ea",
+    "results": 1,
+    "page": 1,
+    "version": "1.4"
+  }
+}

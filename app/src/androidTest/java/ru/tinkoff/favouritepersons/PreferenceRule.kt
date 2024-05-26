@@ -10,7 +10,6 @@ class PreferenceRule : TestRule {
     override fun apply(base: Statement, p1: Description): Statement {
         return object : Statement() {
             override fun evaluate() {
-                putAuthParam()
                 putUrl()
                 base.evaluate() // our test works here
                 cleanPrefs()
@@ -18,17 +17,9 @@ class PreferenceRule : TestRule {
         }
     }
 
-    private fun putAuthParam() {
-        InstrumentationRegistry.getInstrumentation().targetContext
-            .getSharedPreferences("meowle", Context.MODE_PRIVATE)
-            .edit()
-            .putBoolean("auth", true)
-            .commit()
-    }
-
     private fun putUrl() {
         InstrumentationRegistry.getInstrumentation().targetContext
-            .getSharedPreferences("meowle", Context.MODE_PRIVATE)
+            .getSharedPreferences("favouritepersons", Context.MODE_PRIVATE)
             .edit()
             .putString("url", "http://localhost:5000")
             .commit()
@@ -36,7 +27,7 @@ class PreferenceRule : TestRule {
 
     private fun cleanPrefs() {
         InstrumentationRegistry.getInstrumentation().targetContext
-            .getSharedPreferences("meowle", Context.MODE_PRIVATE)
+            .getSharedPreferences("favouritepersons", Context.MODE_PRIVATE)
             .edit()
             .clear()
             .commit()
