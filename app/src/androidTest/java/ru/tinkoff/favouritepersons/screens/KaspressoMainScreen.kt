@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.util.Log
 import android.view.View
 import androidx.test.espresso.action.ViewActions
 import com.kaspersky.kaspresso.screens.KScreen
@@ -28,7 +29,7 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
     private val sortButton = KButton{withId(R.id.action_item_sort)}
     private val sortByFullNameButton = KButton{withId(R.id.bsd_rb_name)}
     private val sortByRatingButton = KButton{withId(R.id.bsd_rb_rating)}
-    private val toastNoInternet = KButton{withText(containsString("Internet error! Check your connection"))}
+    private val toastNoInternet = KTextView{withText(containsString("Internet error! Check your connection"))}
 
     private val personList = KRecyclerView(
         builder = { withId(R.id.rv_person_list) },
@@ -127,6 +128,21 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
 
     fun checkInternetToast(){
         toastNoInternet.isDisplayed()
+    }
+
+    fun checkPhotoNotVisible() : Boolean {
+        return try {
+            personList.childAt<PersonRating>(0) {
+                this.personPhoto.hasDrawable(R.drawable.gigachad)
+            }
+            false // Если нет исключения, изображение видно
+        } catch (e: junit.framework.AssertionFailedError) {
+            Log.d("ERROR", e.toString())
+            false // Если AssertionError, изображение не видно
+        } catch (e: java.lang.NullPointerException) {
+            Log.d("ERROR", e.toString())
+            true // Если NullPointerException, изображение не видно
+        }
     }
 
 }

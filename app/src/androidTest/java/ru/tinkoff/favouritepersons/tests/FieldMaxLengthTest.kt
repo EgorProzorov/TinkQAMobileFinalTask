@@ -17,9 +17,9 @@ import ru.tinkoff.favouritepersons.presentation.activities.MainActivity
 import ru.tinkoff.favouritepersons.screens.KaspressoAddStudentScreen
 import ru.tinkoff.favouritepersons.screens.KaspressoMainScreen
 
-// TEST CASE 11
+// TEST CASE 12
 @RunWith(Parameterized::class) // параметризированный тест, заполянем все, кроме одного и ждем сообщения об ошибке
-class EditValidationTest(
+class FieldMaxLengthTest(
     private val fieldName: String,
     private val errorMessage: String
 ) : TestCase(
@@ -36,12 +36,10 @@ class EditValidationTest(
 
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
-
     @Before
     fun editDatabase() {
         activityScenarioRule.scenario.onActivity { activity ->
             DatabaseHelper.clearDatabase(activity)
-            DatabaseHelper.addUser(activity)
         }
     }
 
@@ -50,28 +48,26 @@ class EditValidationTest(
         @Parameterized.Parameters() // параметры для тестирования и сообщение об ошибке которое ожидаем
         fun data(): Collection<Array<Any>> {
             return listOf(
-                arrayOf("Name", "Поле должно быть заполнено!"),
-                arrayOf("Surname", "Поле должно быть заполнено!"),
-                arrayOf("Gender", "Поле должно быть заполнено буквами М или Ж"),
-                arrayOf("Birthdate", "Поле должно быть заполнено в формате 1990-12-31"),
-                arrayOf("Email", "Поле должно быть заполнено в формате mail@gmail.com"),
-                arrayOf("Phone", "Поле должно быть заполнено!"),
-                arrayOf("Address", "Поле должно быть заполнено!"),
-                arrayOf("PhotoLink", "Поле должно быть заполнено!"),
-                arrayOf("Score", "Поле должно быть заполнено двузначным числом")
+                arrayOf("Name", "Максимальная длина 100 символов"),
+                arrayOf("Surname", "Максимальная длина 100 символов"),
+                arrayOf("Email", "Максимальная длина 100 символов")
             )
         }
     }
 
     @Test
-    fun editValidation() = run {
+    fun maxLengthField() = run {
         val mainScreen = KaspressoMainScreen()
-        mainScreen.clickFirstStudent()
+        mainScreen.clickAddMenu()
+        mainScreen.clickAddManually()
         val addScreen = KaspressoAddStudentScreen()
-        addScreen.clearField(fieldName)
+        addScreen.apply {
+            fillAllInsteadOne(fieldName)
+            fillLongData(fieldName)
+            clickSave()
 
-        addScreen.clickSave()
-        addScreen.checkErrorMessage(errorMessage)
+            checkErrorMessage(errorMessage)
+        }
 
     }
 

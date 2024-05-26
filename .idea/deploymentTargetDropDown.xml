@@ -2,21 +2,11 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="addNoInternet()">
-        <State>
-          <runningDeviceTargetSelectedWithDropDown>
-            <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Pixel_6_API_28.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-05-25T15:29:47.500480Z" />
-        </State>
+      <entry key="AddStudentValidationTest">
+        <State />
+      </entry>
+      <entry key="UploadPhotoNoInternetTest">
+        <State />
       </entry>
       <entry key="app">
         <State>
@@ -34,16 +24,13 @@
           <timeTargetWasSelectedWithDropDown value="2024-05-25T00:11:29.197388Z" />
         </State>
       </entry>
-      <entry key="editPhoto()">
-        <State />
-      </entry>
       <entry key="editPhotoNoInternet()">
         <State />
       </entry>
-      <entry key="editValidation()">
+      <entry key="maxLengthField() (1)">
         <State />
       </entry>
-      <entry key="saveState()">
+      <entry key="uploadPhotoNoInternet()">
         <State />
       </entry>
     </value>

@@ -24,6 +24,8 @@ class KaspressoAddStudentScreen : KScreen<KaspressoMainScreen>() {
     private val  photoLinkField = KTextInputLayout{withId(R.id.til_image_link)}
     private val  scoreField = KTextInputLayout{withId(R.id.til_score)}
     private val saveButton = KButton{withText("Сохранить")}
+
+    private val errorMaxLength = KTextView{withText("Максимальная длина 100 символов")}
     //Actions
     fun enterName(name : String){
         nameField.edit.replaceText(name)
@@ -71,35 +73,6 @@ class KaspressoAddStudentScreen : KScreen<KaspressoMainScreen>() {
         }.isVisible()
     }
 
-    fun cleanAll(){
-        nameField.edit {
-            replaceText("")
-        }
-        surnameField.edit {
-            replaceText("")
-        }
-        genderField.edit {
-            replaceText("")
-        }
-        birthdateField.edit {
-            replaceText("")
-        }
-        emailField.edit {
-            replaceText("")
-        }
-        phoneField.edit {
-            replaceText("")
-        }
-        addressField.edit {
-            replaceText("")
-        }
-        photoLinkField.edit {
-            replaceText("")
-        }
-        scoreField.edit {
-            replaceText("")
-        }
-    }
     fun clearField(fieldName: String) {
         when (fieldName) {
             "Name" -> nameField.edit.replaceText("")
@@ -113,6 +86,7 @@ class KaspressoAddStudentScreen : KScreen<KaspressoMainScreen>() {
             "Score" -> scoreField.edit { replaceText("") }
         }
     }
+
     fun fillAllInsteadOne(fieldName: String){
         if (fieldName != "Name") enterName("Billy")
         if (fieldName != "Surname") enterSurname("Herrington")
@@ -123,6 +97,12 @@ class KaspressoAddStudentScreen : KScreen<KaspressoMainScreen>() {
         if (fieldName != "Address") enterAddress("123 Street, City")
         if (fieldName != "PhotoLink") enterPhotoLink("https://image.tmdb.org/t/p/w235_and_h235_face/g4yz1mu1CV5irtLvXA5zXA1imBC.jpg")
         if (fieldName != "Score") enterScore("100")
+    }
+
+    fun fillLongData(fieldName: String){
+        if (fieldName == "Name") enterName("a".repeat(1000))
+        if (fieldName == "Surname") enterSurname("b".repeat(1000))
+        if (fieldName == "Email") enterEmail("a".repeat(1000) + "@mail.ru")
     }
 
 }

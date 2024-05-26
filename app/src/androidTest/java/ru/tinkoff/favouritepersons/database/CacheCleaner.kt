@@ -15,7 +15,6 @@ object CacheCleaner {
                 }
             }
         }
-        // The directory is now empty so delete it
         return dir.delete()
     }
 }
