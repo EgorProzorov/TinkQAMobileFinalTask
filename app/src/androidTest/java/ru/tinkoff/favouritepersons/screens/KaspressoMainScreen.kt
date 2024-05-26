@@ -60,6 +60,11 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
             this.personRating.hasText(score)
         }
     }
+    fun checkUserAge(privateInfo: String){
+        personList.childAt<PersonRating>(0){
+            this.personPrivateInfo.hasText(privateInfo)
+        }
+    }
 
     fun checkIfEmpty(){
         personList{hasSize(0)}

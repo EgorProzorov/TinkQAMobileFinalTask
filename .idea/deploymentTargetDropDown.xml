@@ -8,6 +8,9 @@
       <entry key="UploadPhotoNoInternetTest">
         <State />
       </entry>
+      <entry key="ageCount()">
+        <State />
+      </entry>
       <entry key="app">
         <State>
           <targetSelectedWithDropDown>
@@ -25,9 +28,6 @@
         </State>
       </entry>
       <entry key="editPhotoNoInternet()">
-        <State />
-      </entry>
-      <entry key="maxLengthField() (1)">
         <State />
       </entry>
       <entry key="uploadPhotoNoInternet()">
