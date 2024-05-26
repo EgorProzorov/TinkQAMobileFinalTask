@@ -2,9 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="SortByFullNameTest">
-        <State />
-      </entry>
       <entry key="addNoInternet()">
         <State>
           <runningDeviceTargetSelectedWithDropDown>
@@ -41,6 +38,9 @@
         <State />
       </entry>
       <entry key="editPhotoNoInternet()">
+        <State />
+      </entry>
+      <entry key="saveState()">
         <State />
       </entry>
       <entry key="sort()">
