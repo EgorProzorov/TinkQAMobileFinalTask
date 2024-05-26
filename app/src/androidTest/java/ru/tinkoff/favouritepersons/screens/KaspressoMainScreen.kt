@@ -1,14 +1,11 @@
 package ru.tinkoff.favouritepersons.screens
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.drawable.BitmapDrawable
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.view.View
-import android.widget.ImageView
-import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.web.webdriver.DriverAtoms.getText
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.image.KImageView
 import io.github.kakaocup.kakao.recycler.KRecyclerItem
@@ -25,18 +22,27 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
     override val layoutId: Int? = null
     override val viewClass: Class<*>? = null
 
-    private val  addPersonManuallyButton = KButton{withId(R.id.fab_add_person_manually)}
+    private val addStudentMenu = KButton{withId(R.id.fab_add_person)}
+    private val  addStudentManuallyButton = KButton{withId(R.id.fab_add_person_manually)}
+    private val addStudentInternetButton = KButton{withId(R.id.fab_add_person_by_network)}
     private val sortButton = KButton{withId(R.id.action_item_sort)}
     private val sortByFullNameButton = KButton{withId(R.id.bsd_rb_name)}
     private val sortByRatingButton = KButton{withId(R.id.bsd_rb_rating)}
+    private val toastNoInternet = KButton{withText(containsString("Internet error! Check your connection"))}
 
     private val personList = KRecyclerView(
         builder = { withId(R.id.rv_person_list) },
         itemTypeBuilder = { itemType(::PersonRating) }
     )
 
+    fun clickAddMenu(){
+        addStudentMenu.click()
+    }
     fun clickAddManually(){
-    addPersonManuallyButton.click()
+    addStudentManuallyButton.click()
+    }
+    fun clickAddInternet(){
+        addStudentInternetButton.click()
     }
 
     fun checkIfOpen(){
@@ -118,6 +124,11 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
             }
         }
     }
+
+    fun checkInternetToast(){
+        toastNoInternet.isDisplayed()
+    }
+
 }
 private class PersonRating(matcher: Matcher<View>) : KRecyclerItem<PersonRating>(matcher) {
     val personName = KTextView(matcher) { withId(R.id.person_name) }

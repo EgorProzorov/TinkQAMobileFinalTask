@@ -19,7 +19,7 @@ import ru.tinkoff.favouritepersons.presentation.activities.MainActivity
 import ru.tinkoff.favouritepersons.screens.KaspressoAddStudentScreen
 import ru.tinkoff.favouritepersons.screens.KaspressoMainScreen
 
-// TEST CASE 4
+// TEST CASE 7
 @RunWith(AndroidJUnit4::class)
 class EditPhotoTest : TestCase(
     kaspressoBuilder = Kaspresso.Builder.simple(

@@ -16,7 +16,7 @@ import ru.tinkoff.favouritepersons.database.DatabaseHelper
 import ru.tinkoff.favouritepersons.presentation.activities.MainActivity
 import ru.tinkoff.favouritepersons.screens.KaspressoMainScreen
 
-// TEST CASE 6
+// TEST CASE 5
 @RunWith(AndroidJUnit4::class)
 class SortByFullNameTest : TestCase(
     kaspressoBuilder = Kaspresso.Builder.simple(
