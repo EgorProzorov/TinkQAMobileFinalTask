@@ -40,24 +40,11 @@
       <entry key="editPhotoNoInternet()">
         <State />
       </entry>
-      <entry key="saveState()">
+      <entry key="editValidation()">
         <State />
       </entry>
-      <entry key="sort()">
-        <State>
-          <runningDeviceTargetSelectedWithDropDown>
-            <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Copy_of_Pixel_6_API_28.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-05-24T17:25:58.491030Z" />
-        </State>
+      <entry key="saveState()">
+        <State />
       </entry>
     </value>
   </component>

@@ -6,18 +6,20 @@ import com.kaspersky.kaspresso.interceptors.watcher.testcase.impl.views.DumpView
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
 import com.kaspersky.kaspresso.params.FlakySafetyParams
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import ru.tinkoff.favouritepersons.PreferenceRule
+import ru.tinkoff.favouritepersons.database.DatabaseHelper
 import ru.tinkoff.favouritepersons.presentation.activities.MainActivity
 import ru.tinkoff.favouritepersons.screens.KaspressoAddStudentScreen
 import ru.tinkoff.favouritepersons.screens.KaspressoMainScreen
 
 // TEST CASE 2
 @RunWith(Parameterized::class) // параметризированный тест, заполянем все, кроме одного и ждем сообщения об ошибке
-class AddStudentValidationTest(
+class EditValidationTest(
     private val fieldName: String,
     private val errorMessage: String
 ) : TestCase(
@@ -34,6 +36,14 @@ class AddStudentValidationTest(
 
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
+
+    @Before
+    fun editDatabase() {
+        activityScenarioRule.scenario.onActivity { activity ->
+            DatabaseHelper.clearDatabase(activity)
+            DatabaseHelper.addUser(activity)
+        }
+    }
 
     companion object {
         @JvmStatic
@@ -54,18 +64,14 @@ class AddStudentValidationTest(
     }
 
     @Test
-    fun addValidation() = run {
+    fun editValidation() = run {
         val mainScreen = KaspressoMainScreen()
-        mainScreen.clickAddMenu()
-        mainScreen.clickAddManually()
+        mainScreen.clickFirstStudent()
         val addScreen = KaspressoAddStudentScreen()
-        addScreen.apply {
-            fillAllInsteadOne(fieldName)
+        addScreen.clearField(fieldName)
 
-            clickSave()
-
-            checkErrorMessage(errorMessage)
-        }
+        addScreen.clickSave()
+        addScreen.checkErrorMessage(errorMessage)
 
     }
 
