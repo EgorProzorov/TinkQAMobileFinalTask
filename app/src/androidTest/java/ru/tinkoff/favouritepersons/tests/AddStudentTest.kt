@@ -2,7 +2,6 @@ package ru.tinkoff.favouritepersons.tests
 
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.github.tomakehurst.wiremock.client.WireMock
 
 import com.kaspersky.kaspresso.interceptors.watcher.testcase.impl.views.DumpViewsInterceptor
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
@@ -14,12 +13,10 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import ru.tinkoff.favouritepersons.datacouters.AgeCount
 import ru.tinkoff.favouritepersons.PreferenceRule
-import ru.tinkoff.favouritepersons.R
 import ru.tinkoff.favouritepersons.database.DatabaseHelper
 import ru.tinkoff.favouritepersons.presentation.activities.MainActivity
 import ru.tinkoff.favouritepersons.screens.KaspressoAddStudentScreen
 import ru.tinkoff.favouritepersons.screens.KaspressoMainScreen
-import ru.tinkoff.favouritepersons.wiremock.WireMockHelper
 
 // TEST CASE 1
 @RunWith(AndroidJUnit4::class)

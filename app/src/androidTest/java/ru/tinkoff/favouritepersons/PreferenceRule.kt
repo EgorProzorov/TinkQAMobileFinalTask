@@ -5,8 +5,6 @@ import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
-import ru.tinkoff.favouritepersons.database.CacheCleaner
-import ru.tinkoff.favouritepersons.database.DatabaseHelper
 
 class PreferenceRule : TestRule {
     override fun apply(base: Statement, p1: Description): Statement {

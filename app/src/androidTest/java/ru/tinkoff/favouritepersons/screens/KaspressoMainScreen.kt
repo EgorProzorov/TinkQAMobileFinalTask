@@ -114,15 +114,6 @@ class KaspressoMainScreen : KScreen<KaspressoMainScreen>() {
         }
     }
 
-    fun checkAvatar(){
-        personList.childAt<PersonRating>(0){
-            this.personPhoto{
-                isDisplayed()
-                isVisible()
-            }
-        }
-    }
-
     fun checkInternetToast(){
         toastNoInternet.isDisplayed()
     }
