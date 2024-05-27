@@ -2,19 +2,16 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="All Tests">
+      <entry key="AgeCountTest">
         <State />
       </entry>
-      <entry key="EditPhotoTest">
+      <entry key="EditPhotoNoInternetTest">
         <State />
       </entry>
-      <entry key="NegativeAgeTest">
+      <entry key="EditValidationTest">
         <State />
       </entry>
       <entry key="UploadPhotoNoInternetTest">
-        <State />
-      </entry>
-      <entry key="ageCount()">
         <State />
       </entry>
       <entry key="app">
@@ -32,6 +29,9 @@
           </targetSelectedWithDropDown>
           <timeTargetWasSelectedWithDropDown value="2024-05-25T00:11:29.197388Z" />
         </State>
+      </entry>
+      <entry key="maxLengthField()">
+        <State />
       </entry>
     </value>
   </component>

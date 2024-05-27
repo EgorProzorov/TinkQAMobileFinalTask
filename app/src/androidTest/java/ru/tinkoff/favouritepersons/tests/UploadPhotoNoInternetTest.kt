@@ -2,7 +2,6 @@ package ru.tinkoff.favouritepersons.tests
 
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.github.tomakehurst.wiremock.junit.WireMockRule
 
 import com.kaspersky.kaspresso.interceptors.watcher.testcase.impl.views.DumpViewsInterceptor
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
@@ -23,14 +22,18 @@ import ru.tinkoff.favouritepersons.screens.KaspressoMainScreen
 // TEST CASE 13
 // тест отлавливает 2 ошибки, если ловим NullPointerException при проверке на hasDrawable, значит, что фотографии нету,
 // если словили AssertionFailedError, значит фотка появилась
+
+//почему то даже после очиски кеша фотка появляется, если запустить тест-кейс, предварительно выключив интернет на эмуляторе все пройдет
+// если интренет будет включен, фотография без интернета все равно появится и тест упадет
 @RunWith(AndroidJUnit4::class)
-class UploadPhotoNoInternetTest : TestCase( // падает, не ловим тоаст с предупреждением об отсутствии интернета
+class UploadPhotoNoInternetTest : TestCase(
     kaspressoBuilder = Kaspresso.Builder.simple(
         customize = {
             flakySafetyParams = FlakySafetyParams.custom(timeoutMs = 6_000, intervalMs = 250)
         }
     ).apply {
         testRunWatcherInterceptors.addAll(listOf(DumpViewsInterceptor(viewHierarchyDumper)))
+
     }
 ) {
     @get:Rule
@@ -39,20 +42,19 @@ class UploadPhotoNoInternetTest : TestCase( // падает, не ловим т�
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
 
+
     @Before
     fun editDatabase() {
+        device.network.toggleWiFi(false)
+        device.network.toggleMobileData(false)
         activityScenarioRule.scenario.onActivity { activity ->
             DatabaseHelper.clearDatabase(activity)
         }
+        CacheCleaner.deleteDir(device.targetContext.cacheDir)
     }
 
     @Test
-    fun uploadPhotoNoInternet() = before {
-        device.network.toggleWiFi(false)
-        device.network.toggleMobileData(false)
-        CacheCleaner.deleteDir(device.targetContext.cacheDir)
-
-    }.run {
+    fun uploadPhotoNoInternet() = run {
         val mainScreen = KaspressoMainScreen()
 
         mainScreen.clickAddMenu()
@@ -67,7 +69,7 @@ class UploadPhotoNoInternetTest : TestCase( // падает, не ловим т�
             enterEmail("billy@example.com")
             enterPhone("1234567890")
             enterAddress("Our hearts")
-            enterPhotoLink("https://steamuserimages-a.akamaihd.net/ugc/2301969478603184329/ED862B8FB36DCA804AB8EFC5B062FC71126E8E4C/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true")
+            enterPhotoLink("https://avatars.cloudflare.steamstatic.com/889fb67f2d7f50e8d8997f3f854a25ab8722d094_full.jpg")
             enterScore("100")
             clickSave()
         }

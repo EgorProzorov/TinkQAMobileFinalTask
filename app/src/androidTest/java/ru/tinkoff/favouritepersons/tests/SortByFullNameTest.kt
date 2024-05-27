@@ -44,7 +44,7 @@ class SortByFullNameTest : TestCase(
     fun sort() = run {
         val mainScreen = KaspressoMainScreen()
         mainScreen.clickSortButton()
-        mainScreen.clickSortByRating()
-        mainScreen.checkIfSortedByRating()
+        mainScreen.clickSortByFullName()
+        mainScreen.checkIfSortedByFullName()
     }
 }
