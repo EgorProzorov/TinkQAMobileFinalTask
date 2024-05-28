@@ -8,10 +8,10 @@
       <entry key="All Tests">
         <State />
       </entry>
-      <entry key="EditPhotoNoInternetTest">
+      <entry key="NegativeAgeTest">
         <State />
       </entry>
-      <entry key="NegativeAgeTest">
+      <entry key="Tests in 'ru.tinkoff.favouritepersons.tests'">
         <State />
       </entry>
       <entry key="UploadPhotoNoInternetTest">

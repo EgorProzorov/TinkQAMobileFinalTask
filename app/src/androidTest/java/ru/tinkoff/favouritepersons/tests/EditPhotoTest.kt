@@ -41,6 +41,7 @@ class EditPhotoTest : TestCase(
 
     @Before
     fun editDatabase() {
+        device.network.toggleWiFi(true)
         activityScenarioRule.scenario.onActivity { activity ->
             DatabaseHelper.clearDatabase(activity)
             DatabaseHelper.addUser(activity)
